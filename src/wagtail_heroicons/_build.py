@@ -19,7 +19,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     install_heroicons(args.version, DEST_DIR)
 
-    icon_registry = generate_icon_registry()
+    icon_registry = generate_icon_registry(DEST_DIR)
 
     write_icon_registry(icon_registry)
 
@@ -52,24 +52,29 @@ def install_heroicons(version: str, dest: Path) -> None:
     shutil.rmtree("node_modules")
 
 
-def generate_icon_registry() -> list[str]:
+def generate_icon_registry(dest: Path) -> list[str]:
     icon_registry = []
 
-    for child in DEST_DIR.rglob("*.svg"):
-        with child.open("r") as f:
-            soup = BeautifulSoup(f.read(), "html.parser")
-
-        for icon in soup.find_all("svg"):
-            # Wagtail uses the id attribute to identify icons. The name used in Wagtail
-            # is the id attribute of the <svg> tag, minus the "icon-" prefix.
-            icon.attrs["id"] = f"icon-heroicons-{child.stem}-{child.parent.name}"
-
-            icon_registry.append(f"{child.parent.name}/{child.stem}.svg")
-
-        with child.open("wb") as f:
-            f.write(soup.prettify("utf-8"))
+    for child in dest.rglob("*.svg"):
+        svg = add_id_to_svg(child)
+        icon_registry.append(f"{svg.parent.name}/{svg.stem}.svg")
 
     return sorted(icon_registry)
+
+
+def add_id_to_svg(svg: Path) -> Path:
+    with svg.open("r") as f:
+        soup = BeautifulSoup(f.read(), "html.parser")
+
+    for icon in soup.find_all("svg"):
+        # Wagtail uses the id attribute to identify icons. The name used in Wagtail
+        # is the id attribute of the <svg> tag, minus the "icon-" prefix.
+        icon.attrs["id"] = f"icon-heroicons-{svg.stem}-{svg.parent.name}"
+
+    with svg.open("wb") as f:
+        f.write(soup.prettify("utf-8"))
+
+    return svg
 
 
 def write_icon_registry(icon_registry: list[str]) -> None:
