@@ -1,9 +1,6 @@
 from __future__ import annotations
 
-from html.parser import HTMLParser
 from pathlib import Path
-
-import pytest
 
 from wagtail_heroicons._build import HEROICONS_LATEST_VERSION
 from wagtail_heroicons._build import add_id_to_svg
@@ -36,15 +33,6 @@ def test_install_heroicons(tmpdir):
     assert not tmpdir.join("node_modules").exists()
 
 
-@pytest.fixture
-def heroicon_installation_dir(tmpdir):
-    dest = tmpdir.join("heroicons")
-
-    install_heroicons(HEROICONS_LATEST_VERSION, dest)
-
-    return Path(dest)
-
-
 def test_generate_icon_registry(heroicon_installation_dir):
     icon_count = list(heroicon_installation_dir.rglob("*.svg"))
 
@@ -53,21 +41,7 @@ def test_generate_icon_registry(heroicon_installation_dir):
     assert len(icon_count) == len(icon_registry)
 
 
-class SVGParser(HTMLParser):
-    def __init__(self):
-        super().__init__()
-        self.found_id = False
-        self.id = None
-
-    def handle_starttag(self, tag, attrs):
-        if tag == "svg":
-            for attr in attrs:
-                if "id" in attr:
-                    self.found_id = True
-                    self.id = attr[1]
-
-
-def test_add_id_to_svg(tmpdir):
+def test_add_id_to_svg(tmpdir, svgparser):
     file = tmpdir.join("dummy.svg")
     content = """
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -78,20 +52,18 @@ def test_add_id_to_svg(tmpdir):
 
     svg = add_id_to_svg(Path(file))
 
-    parser = SVGParser()
-    parser.feed(svg.read_text())
+    svgparser.feed(svg.read_text())
 
-    assert parser.found_id
-    assert parser.id.startswith("icon-heroicons-dummy")
+    assert svgparser.found_id
+    assert svgparser.id.startswith("icon-heroicons-dummy")
 
 
-def test_write_icon_registry(tmpdir):
-    install_heroicons(HEROICONS_LATEST_VERSION, Path(tmpdir))
-    icon_registry = generate_icon_registry(Path(tmpdir))
+def test_write_icon_registry(heroicon_installation_dir):
+    icon_registry = generate_icon_registry(heroicon_installation_dir)
 
-    write_icon_registry(icon_registry, Path(tmpdir) / "icon_registry.py")
+    write_icon_registry(icon_registry, heroicon_installation_dir / "icon_registry.py")
 
-    assert Path(tmpdir / "icon_registry.py").exists()
+    assert Path(heroicon_installation_dir / "icon_registry.py").exists()
 
 
 def test_main_no_args():
