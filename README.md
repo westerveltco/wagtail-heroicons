@@ -23,9 +23,9 @@ INSTALLED_APPS = [
 
 ## Usage
 
-All icons follow the following naming convention: `heroicon-<name>-<style>`.
+All icons follow the following naming convention: `heroicons-<name>-<style>`.
 
-For example, the [solid Adjustments icon](https://heroicons.com/#adjustments-sm-btn) would be `heroicon-adjustments-solid`.
+For example, the [solid Adjustments icon](https://heroicons.com/#adjustments-sm-btn) would be `heroicons-adjustments-solid`.
 
 To see all available icons, names and styles, visit the [Heroicons website](https://heroicons.com/).
 
