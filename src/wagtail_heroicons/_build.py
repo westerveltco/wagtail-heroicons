@@ -17,9 +17,9 @@ DEST_DIR = Path("src/wagtail_heroicons/templates/heroicons")
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
 
-    install_heroicons(args.version, DEST_DIR)
+    install_heroicons(args.version, args.dest)
 
-    icon_registry = generate_icon_registry(DEST_DIR)
+    icon_registry = generate_icon_registry(args.dest)
 
     write_icon_registry(icon_registry, Path("src/wagtail_heroicons/icons.py"))
 
@@ -34,6 +34,13 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         "--version",
         help="choose the version of heroicons to use",
         default=HEROICONS_LATEST_VERSION,
+    )
+
+    parser.add_argument(
+        "--dest",
+        help="choose the destination directory",
+        type=Path,
+        default=DEST_DIR,
     )
 
     return parser.parse_args(argv)
