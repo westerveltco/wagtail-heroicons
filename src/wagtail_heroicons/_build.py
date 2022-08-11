@@ -3,11 +3,14 @@ from __future__ import annotations
 
 import argparse
 import shutil
+import sys
 from collections.abc import Sequence
 from pathlib import Path
 
 from bs4 import BeautifulSoup
 from nodejs import npm
+
+PYTHON_37 = sys.version_info == (3, 7)
 
 HEROICONS_LATEST_VERSION = "1.0.6"
 NODE_SRC_DIR = Path("node_modules/heroicons")
@@ -43,11 +46,18 @@ def install_heroicons(version: str, dest: Path) -> None:
     npm.run(["install", f"heroicons@{version}", "--silent", "--no-save"])
 
     for icon_type in ["outline", "solid"]:
-        shutil.copytree(
-            f"{NODE_SRC_DIR}/{icon_type}",
-            f"{dest}/{icon_type}",
-            dirs_exist_ok=True,
-        )
+        if not PYTHON_37:
+            shutil.copytree(
+                f"{NODE_SRC_DIR}/{icon_type}",
+                f"{dest}/{icon_type}",
+                dirs_exist_ok=True,
+            )
+        else:
+            shutil.rmtree(f"{dest}/{icon_type}", ignore_errors=True)
+            shutil.copytree(
+                f"{NODE_SRC_DIR}/{icon_type}",
+                f"{dest}/{icon_type}",
+            )
 
     shutil.rmtree("node_modules")
 
