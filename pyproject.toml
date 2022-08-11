@@ -1,0 +1,123 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+authors = [
+  {name = "Josh Thomas", email = "josh@joshthomas.dev"},
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "wagtail>=2.15",
+]
+description = 'Add Heroicons to your Wagtail site'
+dynamic = ["version"]
+keywords = []
+license = "MIT"
+name = "wagtail-heroicons"
+readme = "README.md"
+requires-python = ">=3.7"
+
+[project.urls]
+Documentation = "https://github.com/joshuadavidthomas/wagtail-heroicons#readme"
+Issues = "https://github.com/joshuadavidthomas/wagtail-heroicons/issues"
+Source = "https://github.com/joshuadavidthomas/wagtail-heroicons"
+
+[tool.hatch.version]
+path = "src/wagtail_heroicons/__init__.py"
+
+[tool.hatch.build]
+exclude = ["_build.py"]
+sources = ["src"]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "beautifulsoup4",
+  "coverage[toml]>=6.2",
+  "nodejs-bin",
+  "pytest",
+  "pytest-cov",
+]
+[tool.hatch.envs.default.scripts]
+build = "python src/wagtail_heroicons/_build.py {args}"
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=src/wagtail_heroicons --cov=tests"
+no-cov = "cov --no-cov"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["37", "38", "39", "310", "311"]
+
+[tool.hatch.envs.lint]
+dependencies = [
+  "flake8>=5.0.4",
+  "flake8-bugbear>=22.7.1",
+  "black>=22.6.0",
+  "isort>=5.10.1",
+  "mypy>=0.971",
+]
+[tool.hatch.envs.lint.scripts]
+all = [
+  "style",
+  "typing",
+]
+fmt = [
+  "isort .",
+  "black .",
+  "style",
+]
+style = [
+  "flake8 .",
+  "black --check --diff .",
+  "isort --check-only --diff .",
+]
+typing = "mypy --install-types --non-interactive src/wagtail_heroicons tests"
+
+[tool.black]
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+include = '\.pyi?$'
+line-length = 88
+
+[tool.coverage.run]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.isort]
+add_imports = "from __future__ import annotations"
+force_single_line = true
+known_first_party = "wagtail_heroicons"
+known_wagtail = "wagtail"
+profile = "black"
+sections = "FUTURE,STDLIB,WAGTAIL,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+skip = "node_modules"
+
+[tool.mypy]
+ignore_missing_imports = true
+warn_unused_ignores = true
