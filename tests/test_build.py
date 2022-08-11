@@ -66,13 +66,13 @@ def test_write_icon_registry(heroicon_installation_dir):
     assert Path(heroicon_installation_dir / "icon_registry.py").exists()
 
 
-def test_main_no_args():
-    result = main([])
+def test_main_no_args(tmpdir):
+    result = main(["--dest", str(tmpdir)])
 
     assert result == 0
 
 
-def test_main_version_arg():
-    result = main(["--version", "1.0.5"])
+def test_main_version_arg(tmpdir):
+    result = main(["--version", "1.0.5", "--dest", str(tmpdir)])
 
     assert result == 0
