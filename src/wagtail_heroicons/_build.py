@@ -17,7 +17,7 @@ DEST_DIR = Path("src/wagtail_heroicons/templates/heroicons")
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
 
-    install_heroicons(args.version)
+    install_heroicons(args.version, DEST_DIR)
 
     icon_registry = generate_icon_registry()
 
@@ -39,13 +39,13 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def install_heroicons(version: str) -> None:
+def install_heroicons(version: str, dest: Path) -> None:
     npm.run(["install", f"heroicons@{version}", "--silent", "--no-save"])
 
     for icon_type in ["outline", "solid"]:
         shutil.copytree(
             f"{NODE_SRC_DIR}/{icon_type}",
-            f"{DEST_DIR}/{icon_type}",
+            f"{dest}/{icon_type}",
             dirs_exist_ok=True,
         )
 
