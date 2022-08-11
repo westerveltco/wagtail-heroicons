@@ -6,7 +6,7 @@ from .icons import heroicons
 
 
 @hooks.register("register_icons")
-def register_icons(_icons):
+def register_icons(icons):
     for icon in heroicons:
-        _icons.append(f"heroicons/{icon}")
-    return _icons
+        icons.append(f"heroicons/{icon}")
+    return icons
