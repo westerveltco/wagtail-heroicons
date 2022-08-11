@@ -21,7 +21,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     icon_registry = generate_icon_registry(DEST_DIR)
 
-    write_icon_registry(icon_registry)
+    write_icon_registry(icon_registry, Path("src/wagtail_heroicons/icons.py"))
 
     return 0
 
@@ -77,16 +77,15 @@ def add_id_to_svg(svg: Path) -> Path:
     return svg
 
 
-def write_icon_registry(icon_registry: list[str]) -> None:
-    list_str = "".join(f'\n    "{icon_name}", ' for icon_name in icon_registry)
+def write_icon_registry(icon_registry: list[str], path: Path) -> None:
+    list_str = "".join(f'\n    "{icon_name}",' for icon_name in icon_registry)
 
-    output = f"""
-from __future__ import annotations
+    output = f"""from __future__ import annotations
 
-heroicons = [{list_str}]
+heroicons = [{list_str}\n]
 """
 
-    with Path("src/wagtail_heroicons/icons.py").open("w") as f:
+    with path.open("w") as f:
         f.write(output)
 
 
