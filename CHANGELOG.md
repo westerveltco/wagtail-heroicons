@@ -20,4 +20,4 @@ Initial release!
 - Initial documentation
 
 [unreleased]: https://github.com/joshuadavidthomas/wagtail-heroicons/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.1.0
+[0.1.0]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.0
