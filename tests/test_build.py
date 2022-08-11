@@ -4,9 +4,9 @@ from pathlib import Path
 
 from wagtail_heroicons._build import HEROICONS_LATEST_VERSION
 from wagtail_heroicons._build import add_id_to_svg
+from wagtail_heroicons._build import build
 from wagtail_heroicons._build import generate_icon_registry
 from wagtail_heroicons._build import install_heroicons
-from wagtail_heroicons._build import main
 from wagtail_heroicons._build import parse_args
 from wagtail_heroicons._build import write_icon_registry
 
@@ -66,13 +66,13 @@ def test_write_icon_registry(heroicon_installation_dir):
     assert Path(heroicon_installation_dir / "icon_registry.py").exists()
 
 
-def test_main_no_args(tmpdir):
-    result = main(["--dest", str(tmpdir)])
+def test_build_no_args(tmpdir):
+    result = build(["--dest", str(tmpdir)])
 
     assert result == 0
 
 
-def test_main_version_arg(tmpdir):
-    result = main(["--version", "1.0.5", "--dest", str(tmpdir)])
+def test_build_version_arg(tmpdir):
+    result = build(["--version", "1.0.5", "--dest", str(tmpdir)])
 
     assert result == 0

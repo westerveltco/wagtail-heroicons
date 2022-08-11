@@ -14,7 +14,7 @@ NODE_SRC_DIR = Path("node_modules/heroicons")
 DEST_DIR = Path("src/wagtail_heroicons/templates/heroicons")
 
 
-def main(argv: Sequence[str] | None = None) -> int:
+def build(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
 
     install_heroicons(args.version, args.dest)
@@ -97,4 +97,4 @@ heroicons = [{list_str}\n]
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(build())
