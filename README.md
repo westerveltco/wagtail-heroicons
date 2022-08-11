@@ -1,5 +1,7 @@
 # Wagtail Heroicons
 
+![PyPI](https://img.shields.io/pypi/v/wagtail-heroicons) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/joshuadavidthomas/wagtail-heroicons/test)
+
 Add [Heroicons](https://heroicons.com/) to the Wagtail admin.
 
 Note: SVG icons within the Wagtail admin are a relatively new feature in Wagtail, and the hook used within this package is not publically documented. As such, the API provided by Wagtail may change and cause breakage within this package. See Issue [#6107](https://github.com/wagtail/wagtail/issues/6107) and PR [#6028](https://github.com/wagtail/wagtail/pull/6028) in the Wagtail repository for more information.
