@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from html.parser import HTMLParser
 from pathlib import Path
 
 import pytest
@@ -8,10 +7,12 @@ import pytest
 from wagtail_heroicons._build import HEROICONS_LATEST_VERSION
 from wagtail_heroicons._build import install_heroicons
 
+from .parser import SVGParser
+
 
 @pytest.fixture
-def heroicon_installation_dir(tmpdir):
-    dest = tmpdir.join("heroicons")
+def installed_heroicons(tmpdir) -> Path:
+    dest = tmpdir.join("templates", "heroicons")
 
     install_heroicons(HEROICONS_LATEST_VERSION, dest)
 
@@ -19,18 +20,5 @@ def heroicon_installation_dir(tmpdir):
 
 
 @pytest.fixture
-def svgparser():
-    class SVGParser(HTMLParser):
-        def __init__(self):
-            super().__init__()
-            self.found_id = False
-            self.id = None
-
-        def handle_starttag(self, tag, attrs):
-            if tag == "svg":
-                for attr in attrs:
-                    if "id" in attr:
-                        self.found_id = True
-                        self.id = attr[1]
-
+def svgparser() -> SVGParser:
     return SVGParser()
