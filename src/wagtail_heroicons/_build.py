@@ -21,7 +21,8 @@ def build(argv: Sequence[str] | None = None) -> int:
 
     install_heroicons(args.version, args.dest)
 
-    add_id_to_svgs()
+    for icon in Heroicon.get_icons():
+        icon._add_id()
 
     return 0
 
@@ -46,26 +47,17 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def move_heroicons(src: Path, dest: Path) -> None:
-    shutil.rmtree(dest, ignore_errors=True)
-    shutil.copytree(src, dest)
-
-
 def install_heroicons(version: str, dest: Path) -> None:
     npm.run(["install", f"heroicons@{version}", "--silent", "--no-save"])
 
     for icon_type in ["outline", "solid"]:
-        move_heroicons(
+        shutil.rmtree(dest / icon_type, ignore_errors=True)
+        shutil.copytree(
             NODE_SRC_DIR / icon_type,
             dest / icon_type,
         )
 
     shutil.rmtree("node_modules")
-
-
-def add_id_to_svgs() -> None:
-    for icon in Heroicon.get_icons():
-        icon._add_id()
 
 
 if __name__ == "__main__":
