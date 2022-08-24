@@ -13,6 +13,7 @@ HeroiconList = List["Heroicon"]
 class IconType(Enum):
     OUTLINE = "outline"
     SOLID = "solid"
+    MINI = "mini"
 
 
 @dataclass(order=True)

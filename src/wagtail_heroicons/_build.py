@@ -10,7 +10,7 @@ from nodejs import npm
 
 from wagtail_heroicons.icons import Heroicon
 
-HEROICONS_LATEST_VERSION = "1.0.6"
+HEROICONS_LATEST_VERSION = "2.0.0"
 
 NODE_SRC_DIR = Path(__file__).parent.parent.parent / "node_modules" / "heroicons"
 DEST_DIR = Path(__file__).parent / "templates" / "heroicons"
@@ -50,11 +50,29 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 def install_heroicons(version: str, dest: Path) -> None:
     npm.run(["install", f"heroicons@{version}", "--silent", "--no-save"])
 
-    for icon_type in ["outline", "solid"]:
-        shutil.rmtree(dest / icon_type, ignore_errors=True)
+    icon_types = [
+        {
+            "size": "20",
+            "dir": "solid",
+            "name": "mini",
+        },
+        {
+            "size": "24",
+            "dir": "solid",
+            "name": "solid",
+        },
+        {
+            "size": "24",
+            "dir": "outline",
+            "name": "outline",
+        },
+    ]
+
+    for icon_type in icon_types:
+        shutil.rmtree(dest / icon_type["name"], ignore_errors=True)
         shutil.copytree(
-            NODE_SRC_DIR / icon_type,
-            dest / icon_type,
+            NODE_SRC_DIR / icon_type["size"] / icon_type["dir"],
+            dest / icon_type["name"],
         )
 
     shutil.rmtree("node_modules")

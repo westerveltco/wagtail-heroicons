@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Bump Heroicons to v2.0.0
+
 ### Changed
 
 - Refactored the internals of the package to use a `Heroicon` dataclass instead of a `list`
