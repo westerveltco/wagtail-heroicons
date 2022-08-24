@@ -3,10 +3,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
+from typing import List
 
 from django.utils.functional import classproperty
 
-HeroiconList = list["Heroicon"]
+HeroiconList = List["Heroicon"]
 
 
 class IconType(Enum):
