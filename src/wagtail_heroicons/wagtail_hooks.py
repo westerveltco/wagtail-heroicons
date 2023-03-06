@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-from wagtail.core import hooks
+try:
+    from wagtail import hooks
+except ImportError:
+    from wagtail.core import hooks
 
 from .icons import Heroicon
 

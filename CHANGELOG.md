@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactored the internals of the package to use a `Heroicon` dataclass instead of a `list`
   of icon names.
 
+### Fixed
+
+- Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a 
+  deprecation warning.
+
 ## [0.1.0] - 2020-08-11
 
 Initial release!
