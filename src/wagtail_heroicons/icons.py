@@ -40,9 +40,10 @@ class Heroicon:
 
         return icons
 
-    def _add_id(self) -> None:
+    def _add_id_and_license(self) -> None:
         try:
             from bs4 import BeautifulSoup
+            from bs4 import Comment
         except ImportError as e:  # pragma: no cover
             raise ImportError(
                 "bs4 is required to add the id attribute to the <svg> tag."
@@ -57,6 +58,10 @@ class Heroicon:
             icon.attrs[
                 "id"
             ] = f"icon-heroicons-{self.path.stem}-{self.path.parent.name}"
+            icon.insert(
+                0,
+                Comment(" This work is licensed under the MIT License and is Copyright (c) 2020 Refactoring UI Inc. ")
+            )
 
         with self.path.open("wb") as f:
             f.write(soup.prettify("utf-8"))
