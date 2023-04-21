@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Add the MIT license and Refactoring UI Inc. copyright information to all SVG files.
+
 ## [0.1.1] - 2023-04-21
 
 ### Changed
