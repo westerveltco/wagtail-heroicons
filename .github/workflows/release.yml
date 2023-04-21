@@ -1,0 +1,27 @@
+name: release
+
+on:
+  release: 
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install hatch
+      - name: Build and publish to PyPI
+        env:
+          PYPI_INDEX: test
+          PYPI_USERNAME: __token__
+          PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
+        run:
+          hatch build
+          hatch publish -r ${{ env.PYPI_INDEX }} -u ${{ env.PYPI_USERNAME }} -a ${{ env.PYPI_PASSWORD }}
