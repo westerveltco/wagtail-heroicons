@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2023-04-21
+
 ### Changed
 
 - Refactored the internals of the package to use a `Heroicon` dataclass instead of a `list`
@@ -17,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a 
   deprecation warning.
 
-## [0.1.0] - 2020-08-11
+## [0.1.0] - 2022-08-11
 
 Initial release!
 
@@ -29,5 +31,6 @@ Initial release!
   - Edit and build the icon registry in `icons.py`
 - Initial documentation
 
-[unreleased]: https://github.com/joshuadavidthomas/wagtail-heroicons/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/joshuadavidthomas/wagtail-heroicons/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.0
