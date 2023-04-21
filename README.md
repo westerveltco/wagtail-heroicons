@@ -1,6 +1,6 @@
 # Wagtail Heroicons
 
-[![PyPI](https://img.shields.io/pypi/v/wagtail-heroicons)](https://pypi.org/project/wagtail-heroicons/) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/joshuadavidthomas/wagtail-heroicons/test)](https://github.com/joshuadavidthomas/wagtail-heroicons/actions/workflows/test.yml)
+[![PyPI](https://img.shields.io/pypi/v/wagtail-heroicons)](https://pypi.org/project/wagtail-heroicons/) [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/joshuadavidthomas/wagtail-heroicons/test.yml?branch=main)](https://github.com/joshuadavidthomas/wagtail-heroicons/actions/workflows/test.yml)
 
 Add [Heroicons](https://heroicons.com/) to the Wagtail admin.
 
