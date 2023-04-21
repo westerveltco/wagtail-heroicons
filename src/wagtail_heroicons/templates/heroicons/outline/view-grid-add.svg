@@ -1,4 +1,5 @@
 <svg aria-hidden="true" fill="none" id="icon-heroicons-view-grid-add-outline" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <!-- This work is licensed under the MIT License and is Copyright (c) 2020 Refactoring UI Inc. -->
  <path d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round">
  </path>
 </svg>
