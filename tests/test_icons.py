@@ -12,7 +12,7 @@ def test_get_icons(installed_heroicons):
 def test_add_id(installed_heroicons, svgparser):
     icon = Heroicon.get_icons()[0]
 
-    icon._add_id()
+    icon._add_id_and_license()
 
     svgparser.feed(icon.path.read_text())
 

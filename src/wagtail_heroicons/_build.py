@@ -22,7 +22,7 @@ def build(argv: Sequence[str] | None = None) -> int:
     install_heroicons(args.version, args.dest)
 
     for icon in Heroicon.get_icons():
-        icon._add_id()
+        icon._add_id_and_license()
 
     return 0
 
