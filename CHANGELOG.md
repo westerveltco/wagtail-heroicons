@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Fixed
+
+- Fixed a TypeError when attempting to use the package; the `Heroicon` dataclass was adding
+  a `Path` object to the list of icons in the  `register_icons` Wagtail hook instead of a 
+  string. Reported by @ReijerTheCoder in #40 and fixed in #41.
+
 ## [0.1.2] - 2023-04-21
 
 ### Changed
