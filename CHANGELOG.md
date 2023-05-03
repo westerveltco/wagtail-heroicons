@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## Fixed
+## [0.1.3] - 2023-05-03
+
+### Fixed
 
 - Fixed a TypeError when attempting to use the package; the `Heroicon` dataclass was adding
   a `Path` object to the list of icons in the  `register_icons` Wagtail hook instead of a 
@@ -43,7 +45,8 @@ Initial release!
   - Edit and build the icon registry in `icons.py`
 - Initial documentation
 
-[unreleased]: https://github.com/joshuadavidthomas/wagtail-heroicons/compare/v0.1.2...HEAD
+[unreleased]: https://github.com/joshuadavidthomas/wagtail-heroicons/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.3
 [0.1.2]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.2
 [0.1.1]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.0
