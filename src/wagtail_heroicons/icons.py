@@ -60,7 +60,9 @@ class Heroicon:
             ] = f"icon-heroicons-{self.path.stem}-{self.path.parent.name}"
             icon.insert(
                 0,
-                Comment(" This work is licensed under the MIT License and is Copyright (c) 2020 Refactoring UI Inc. ")
+                Comment(
+                    " This work is licensed under the MIT License and is Copyright (c) 2020 Refactoring UI Inc. "
+                ),
             )
 
         with self.path.open("wb") as f:
