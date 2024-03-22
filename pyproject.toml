@@ -5,18 +5,20 @@ requires = ["hatchling"]
 [project]
 authors = [{ name = "Josh Thomas", email = "josh@joshthomas.dev" }]
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "Framework :: Wagtail",
-  "Framework :: Wagtail :: 2",
-  "Framework :: Wagtail :: 3",
+  "Development Status :: 3 - Alpha",
+  "Framework :: Django",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5.0",
   "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython"
 ]
 dependencies = ["wagtail>=5.2"]
 description = 'Add Heroicons to your Wagtail admin'
@@ -88,7 +90,15 @@ packages = ["src/wagtail_heroicons"]
 path = "src/wagtail_heroicons/__init__.py"
 
 [tool.mypy]
-ignore_missing_imports = true
+check_untyped_defs = true
+exclude = "docs/.*\\.py$"
+mypy_path = "src/"
+no_implicit_optional = true
+plugins = [
+  "mypy_django_plugin.main"
+]
+warn_redundant_casts = true
+warn_unused_configs = true
 warn_unused_ignores = true
 
 [tool.pytest.ini_options]
