@@ -12,8 +12,10 @@ from wagtail_heroicons.icons import Heroicon
 
 HEROICONS_LATEST_VERSION = "1.0.6"
 
-NODE_SRC_DIR = Path(__file__).parent.parent.parent / "node_modules" / "heroicons"
-DEST_DIR = Path(__file__).parent / "templates" / "heroicons"
+NODE_SRC_DIR = Path(__file__).parent / "node_modules" / "heroicons"
+DEST_DIR = (
+    Path(__file__).parent / "src" / "wagtail_heroicons" / "templates" / "heroicons"
+)
 
 
 def build(argv: Sequence[str] | None = None) -> int:

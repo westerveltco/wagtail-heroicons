@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from wagtail_heroicons._build import HEROICONS_LATEST_VERSION
-from wagtail_heroicons._build import build
-from wagtail_heroicons._build import install_heroicons
-from wagtail_heroicons._build import parse_args
+from build import HEROICONS_LATEST_VERSION
+from build import build
+from build import install_heroicons
+from build import parse_args
 
 
 def test_no_args():
