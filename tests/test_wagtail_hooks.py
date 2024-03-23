@@ -15,4 +15,7 @@ def test_register_icons():
         str(filepath) for dir_ in app_template_dirs for filepath in dir_.rglob("*")
     ]
 
-    assert all(icon in template_files for icon in all_icons)
+    assert all(
+        any(template_file.endswith(f"{icon}.svg") for template_file in template_files)
+        for icon in all_icons
+    )
