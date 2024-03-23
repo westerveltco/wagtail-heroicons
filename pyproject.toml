@@ -46,6 +46,7 @@ dev = [
   "nox[uv]",
   "pytest",
   "pytest-cov",
+  "pytest-django",
   "pytest-randomly",
   "pytest-xdist",
   "ruff",
@@ -115,8 +116,9 @@ module = ["tests.*", "wagtail.*"]
 
 [tool.pytest.ini_options]
 addopts = "-n auto --dist loadfile --doctest-modules"
+django_find_project = false
 norecursedirs = ".* bin build dist *.egg htmlcov logs node_modules templates venv"
-python_files = "tests.py test_*.py *_tests.py"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
 pythonpath = "src"
 testpaths = ["tests"]
 
