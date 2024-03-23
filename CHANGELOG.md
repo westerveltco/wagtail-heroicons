@@ -3,7 +3,18 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project attempts to adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+<!--
+## [${version}]
+### Added - for new features
+### Changed - for changes in existing functionality
+### Deprecated - for soon-to-be removed features
+### Removed - for now removed features
+### Fixed - for any bug fixes
+### Security - in case of vulnerabilities
+[${version}]: https://github.com/westerveltco/wagtail-heroicons/releases/tag/v${version}
+-->
 
 <!--
 ## [${version}]
@@ -18,36 +29,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   Now using `django-twc-package` as as package template.
+
 ### Changed
 
-- Now using `nox` for testing.
-- Build script has been moved from inside the package to the root of the repository.
+-   Now using `nox` for testing.
+-   Build script has been moved from inside the package to the root of the repository.
 
 ### Removed
 
-- Dropped support for Python 3.7.
+-   Dropped support for Python 3.7.
 
 ## [0.1.3]
 
-### Fixed
-
-- Fixed a TypeError when attempting to use the package; the `Heroicon` dataclass was adding a `Path` object to the list of icons in the `register_icons` Wagtail hook instead of a string. Reported by @ReijerTheCoder in #40 and fixed in #41.
+-   Fixed a TypeError when attempting to use the package; the `Heroicon` dataclass was adding a `Path` object to the list of icons in the `register_icons` Wagtail hook instead of a string. Reported by @ReijerTheCoder in #40 and fixed in #41.
 
 ## [0.1.2]
 
 ### Changed
 
-- Add the MIT license and Refactoring UI Inc. copyright information to all SVG files.
+-   Add the MIT license and Refactoring UI Inc. copyright information to all SVG files.
 
 ## [0.1.1]
 
 ### Changed
 
-- Refactored the internals of the package to use a `Heroicon` dataclass instead of a `list` of icon names.
+-   Refactored the internals of the package to use a `Heroicon` dataclass instead of a `list` of icon names.
 
 ### Fixed
 
-- Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a deprecation warning.
+-   Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a deprecation warning.
 
 ## [0.1.0]
 
@@ -55,11 +68,11 @@ Initial release!
 
 ### Added
 
-- Build script:
-  - Download Heroicons from NPM and copy to `templates` folder
-  - Edit SVG files to add correct `id` attribute
-  - Edit and build the icon registry in `icons.py`
-- Initial documentation
+-   Build script:
+    -   Download Heroicons from NPM and copy to `templates` folder
+    -   Edit SVG files to add correct `id` attribute
+    -   Edit and build the icon registry in `icons.py`
+-   Initial documentation
 
 [unreleased]: https://github.com/joshuadavidthomas/wagtail-heroicons/compare/v0.1.3...HEAD
 [0.1.0]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.0

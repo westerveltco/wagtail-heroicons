@@ -1,40 +1,41 @@
-# Wagtail Heroicons
+# wagtail-heroicons
 
-[![PyPI](https://img.shields.io/pypi/v/wagtail-heroicons)](https://pypi.org/project/wagtail-heroicons/) [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/joshuadavidthomas/wagtail-heroicons/test.yml?branch=main)](https://github.com/joshuadavidthomas/wagtail-heroicons/actions/workflows/test.yml)
+[![PyPI](https://img.shields.io/pypi/v/wagtail-heroicons)](https://pypi.org/project/wagtail-heroicons/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/wagtail-heroicons)
+![Django Version](https://img.shields.io/badge/django-3.2%20%7C%204.2%20%7C%205.0-%2344B78B?labelColor=%23092E20)
+<!-- https://shields.io/badges -->
+<!-- django-3.2 | 4.2 | 5.0-#44B78B -->
+<!-- labelColor=%23092E20 -->
 
-Add [Heroicons](https://heroicons.com/) to the Wagtail admin.
+## Requirements
 
-Note: SVG icons within the Wagtail admin are a relatively new feature in Wagtail, and the hook used within this package is not publically documented. As such, the API provided by Wagtail may change and cause breakage within this package. See Issue [#6107](https://github.com/wagtail/wagtail/issues/6107) and PR [#6028](https://github.com/wagtail/wagtail/pull/6028) in the Wagtail repository for more information.
+- Python 3.8, 3.9, 3.10, 3.11, 3.12
+- Django 3.2, 4.2, 5.0
 
-## Installation
+## Getting Started
 
-Install the package using pip:
+1. Install the package from PyPI:
 
 ```bash
-pip install wagtail-heroicons
+python -m pip install wagtail-heroicons
 ```
 
-Add `wagtail_heroicons` to your `INSTALLED_APPS` setting in your `settings.py` file:
+2. Add the app to your Django project's `INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = [
-    ...
-    'wagtail_heroicons',
+    ...,
+    "wagtail_heroicons",
+    ...,
 ]
 ```
 
 ## Usage
 
-All icons follow the following naming convention: `heroicons-<name>-<style>`.
+## Documentation
 
-For example, the [solid Adjustments icon](https://heroicons.com/#adjustments-sm-btn) would be `heroicons-adjustments-solid`.
-
-To see all available icons, names and styles, visit the [Heroicons website](https://heroicons.com/).
-
-See the [Wagtail documentation](https://docs.wagtail.org/en/latest/search.html?q=icon) for more information on using icons in Wagtail.
+Please refer to the [documentation](https://wagtail-heroicons.westervelt.dev/) for more information.
 
 ## License
 
-This package is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-Heroicons are licensed under the MIT License and are Copyright (c) 2020 Refactoring UI Inc.
+`wagtail-heroicons` is licensed under the MIT license. See the [`LICENSE`](LICENSE) file for more information.
