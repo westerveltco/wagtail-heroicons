@@ -37,10 +37,12 @@ and this project attempts to adhere to [Semantic Versioning](https://semver.org/
 
 -   Now using `nox` for testing.
 -   Build script has been moved from inside the package to the root of the repository.
+-   Added link to MIT license in all SVG files and split the license and Refactoring UI Inc. copyright information into separate lines.
 
 ### Removed
 
 -   Dropped support for Python 3.7.
+-   Removed all build scripts and related methods from package.
 
 ## [0.1.3]
 
