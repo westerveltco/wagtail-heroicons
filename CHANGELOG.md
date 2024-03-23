@@ -18,6 +18,10 @@ and this project attempts to adhere to [Semantic Versioning](https://semver.org/
 
 ## [Unreleased]
 
+### Fixed
+
+-   Fixed a bug where the icons being registered by the wagtail hook were not being found.
+
 ## [0.2.0]
 
 ### Added
