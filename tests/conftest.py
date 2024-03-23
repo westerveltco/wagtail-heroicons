@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from wagtail_heroicons._build import HEROICONS_LATEST_VERSION
-from wagtail_heroicons._build import install_heroicons
+from build import HEROICONS_LATEST_VERSION
+from build import install_heroicons
 
 from .parser import SVGParser
 
