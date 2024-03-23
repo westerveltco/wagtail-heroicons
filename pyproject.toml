@@ -39,6 +39,7 @@ dev = [
   "coverage[toml]",
   "environs",
   "hatch",
+  "httpx",
   "mypy",
   "nodejs-bin",
   "nox[uv]",
