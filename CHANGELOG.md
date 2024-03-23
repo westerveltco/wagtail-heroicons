@@ -18,6 +18,8 @@ and this project attempts to adhere to [Semantic Versioning](https://semver.org/
 
 ## [Unreleased]
 
+## [0.2.1]
+
 ### Fixed
 
 -   Fixed a bug where the icons being registered by the wagtail hook were not being found.
@@ -74,9 +76,10 @@ Initial release!
     -   Edit and build the icon registry in `icons.py`
 -   Initial documentation
 
-[unreleased]: git@github.com:joshuadavidthomas/wagtail-heroicons/compare/v0.2.0...HEAD
+[unreleased]: git@github.com:joshuadavidthomas/wagtail-heroicons/compare/v0.2.1...HEAD
 [0.1.0]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.0
 [0.1.1]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.1
 [0.1.2]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.2
 [0.1.3]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.3
 [0.2.0]: git@github.com:joshuadavidthomas/wagtail-heroicons/releases/tag/v0.2.0
+[0.2.1]: git@github.com:joshuadavidthomas/wagtail-heroicons/releases/tag/v0.2.1
