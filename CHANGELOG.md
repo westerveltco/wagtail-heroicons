@@ -7,12 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Dropped support for Python 3.7.
+
 ## [0.1.3] - 2023-05-03
 
 ### Fixed
 
 - Fixed a TypeError when attempting to use the package; the `Heroicon` dataclass was adding
-  a `Path` object to the list of icons in the  `register_icons` Wagtail hook instead of a 
+  a `Path` object to the list of icons in the `register_icons` Wagtail hook instead of a
   string. Reported by @ReijerTheCoder in #40 and fixed in #41.
 
 ## [0.1.2] - 2023-04-21
@@ -30,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a 
+- Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a
   deprecation warning.
 
 ## [0.1.0] - 2022-08-11

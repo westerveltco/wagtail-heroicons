@@ -3,9 +3,7 @@ build-backend = "hatchling.build"
 requires = ["hatchling"]
 
 [project]
-authors = [
-  {name = "Josh Thomas", email = "josh@joshthomas.dev"},
-]
+authors = [{ name = "Josh Thomas", email = "josh@joshthomas.dev" }]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Framework :: Wagtail",
@@ -13,7 +11,6 @@ classifiers = [
   "Framework :: Wagtail :: 3",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -21,16 +18,14 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = [
-  "wagtail>=2.15",
-]
+dependencies = ["wagtail>=2.15"]
 description = 'Add Heroicons to your Wagtail site'
 dynamic = ["version"]
 keywords = []
 license = "MIT"
 name = "wagtail-heroicons"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 
 [project.urls]
 Homepage = "https://github.com/joshuadavidthomas/wagtail-heroicons"
@@ -68,20 +63,9 @@ dependencies = [
   "mypy>=0.971",
 ]
 [tool.hatch.envs.lint.scripts]
-all = [
-  "style",
-  "typing",
-]
-fmt = [
-  "isort .",
-  "black .",
-  "style",
-]
-style = [
-  "flake8 .",
-  "black --check --diff .",
-  "isort --check-only --diff .",
-]
+all = ["style", "typing"]
+fmt = ["isort .", "black .", "style"]
+style = ["flake8 .", "black --check --diff .", "isort --check-only --diff ."]
 typing = "mypy --install-types --non-interactive src/wagtail_heroicons tests"
 
 [tool.black]
@@ -106,11 +90,7 @@ branch = true
 parallel = true
 
 [tool.coverage.report]
-exclude_lines = [
-  "no cov",
-  "if __name__ == .__main__.:",
-  "if TYPE_CHECKING:",
-]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 [tool.isort]
 add_imports = "from __future__ import annotations"
