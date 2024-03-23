@@ -21,6 +21,16 @@ def pytest_configure(config):
 TEST_SETTINGS = {
     "INSTALLED_APPS": [
         "wagtail_heroicons",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
         "wagtail",
+    ],
+    "STATIC_URL": "/static/",
+    "TEMPLATES": [
+        {
+            "BACKEND": "django.template.backends.django.DjangoTemplates",
+            "DIRS": [],
+            "APP_DIRS": True,
+        },
     ],
 }
