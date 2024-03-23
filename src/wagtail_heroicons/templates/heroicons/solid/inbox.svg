@@ -1,5 +1,6 @@
 <svg aria-hidden="true" fill="currentColor" id="icon-heroicons-inbox-solid" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
- <!-- This work is licensed under the MIT License and is Copyright (c) 2020 Refactoring UI Inc. -->
+ <!-- MIT License https://mit-license.org/ -->
+ <!-- Copyright (c) 2020 Refactoring UI Inc. -->
  <path clip-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7h-2l-1 2H8l-1-2H5V5z" fill-rule="evenodd">
  </path>
 </svg>

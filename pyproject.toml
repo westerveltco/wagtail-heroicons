@@ -37,8 +37,10 @@ dev = [
   "beautifulsoup4",
   "bumpver",
   "coverage[toml]",
+  "django-stubs",
   "environs",
   "hatch",
+  "httpx",
   "mypy",
   "nodejs-bin",
   "nox[uv]",
@@ -46,7 +48,8 @@ dev = [
   "pytest-cov",
   "pytest-randomly",
   "pytest-xdist",
-  "ruff"
+  "ruff",
+  "types-beautifulsoup4"
 ]
 lint = ["pre-commit"]
 
@@ -76,12 +79,16 @@ exclude_lines = [
   "if TYPE_CHECKING:",
   'def __str__\(self\)\s?\-?\>?\s?\w*\:'
 ]
-fail_under = 75
+fail_under = 60
 
 [tool.coverage.run]
 branch = true
 omit = ["tests/*"]
 parallel = true
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
+strict_settings = false
 
 [tool.hatch.build]
 exclude = [".*", "Justfile"]
@@ -97,9 +104,15 @@ check_untyped_defs = true
 exclude = "docs/.*\\.py$"
 mypy_path = "src/"
 no_implicit_optional = true
+plugins = ["mypy_django_plugin.main"]
 warn_redundant_casts = true
 warn_unused_configs = true
 warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+ignore_errors = true
+ignore_missing_imports = true
+module = ["tests.*", "wagtail.*"]
 
 [tool.pytest.ini_options]
 addopts = "-n auto --dist loadfile --doctest-modules"

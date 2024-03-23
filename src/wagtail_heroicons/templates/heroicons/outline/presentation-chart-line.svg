@@ -1,5 +1,6 @@
 <svg aria-hidden="true" fill="none" id="icon-heroicons-presentation-chart-line-outline" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
- <!-- This work is licensed under the MIT License and is Copyright (c) 2020 Refactoring UI Inc. -->
+ <!-- MIT License https://mit-license.org/ -->
+ <!-- Copyright (c) 2020 Refactoring UI Inc. -->
  <path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" stroke-linecap="round" stroke-linejoin="round">
  </path>
 </svg>
