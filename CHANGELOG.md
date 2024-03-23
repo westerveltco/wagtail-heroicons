@@ -26,33 +26,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Dropped support for Python 3.7.
 
-## [0.1.3] - 2023-05-03
+## [0.1.3]
 
 ### Fixed
 
-- Fixed a TypeError when attempting to use the package; the `Heroicon` dataclass was adding
-  a `Path` object to the list of icons in the `register_icons` Wagtail hook instead of a
-  string. Reported by @ReijerTheCoder in #40 and fixed in #41.
+- Fixed a TypeError when attempting to use the package; the `Heroicon` dataclass was adding a `Path` object to the list of icons in the `register_icons` Wagtail hook instead of a string. Reported by @ReijerTheCoder in #40 and fixed in #41.
 
-## [0.1.2] - 2023-04-21
+## [0.1.2]
 
 ### Changed
 
 - Add the MIT license and Refactoring UI Inc. copyright information to all SVG files.
 
-## [0.1.1] - 2023-04-21
+## [0.1.1]
 
 ### Changed
 
-- Refactored the internals of the package to use a `Heroicon` dataclass instead of a `list`
-  of icon names.
+- Refactored the internals of the package to use a `Heroicon` dataclass instead of a `list` of icon names.
 
 ### Fixed
 
-- Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a
-  deprecation warning.
+- Add try/except block for `hooks` import from `wagtail.core` to `wagtail` to fix a deprecation warning.
 
-## [0.1.0] - 2022-08-11
+## [0.1.0]
 
 Initial release!
 
@@ -65,7 +61,7 @@ Initial release!
 - Initial documentation
 
 [unreleased]: https://github.com/joshuadavidthomas/wagtail-heroicons/compare/v0.1.3...HEAD
-[0.1.3]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.3
-[0.1.2]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.2
-[0.1.1]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.0
+[0.1.1]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.1
+[0.1.2]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.2
+[0.1.3]: https://github.com/joshuadavidthomas/wagtail-heroicons/releases/tag/v0.1.3
