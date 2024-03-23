@@ -3,14 +3,22 @@
 [![PyPI](https://img.shields.io/pypi/v/wagtail-heroicons)](https://pypi.org/project/wagtail-heroicons/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/wagtail-heroicons)
 ![Django Version](https://img.shields.io/badge/django-3.2%20%7C%204.2%20%7C%205.0-%2344B78B?labelColor=%23092E20)
+
 <!-- https://shields.io/badges -->
 <!-- django-3.2 | 4.2 | 5.0-#44B78B -->
 <!-- labelColor=%23092E20 -->
 
+![Wagtail Version](https://img.shields.io/badge/wagtail-5.2%20%7C%206.0-%2300676A?labelColor=%232E1F5E)
+
+<!-- https://shields.io/badges -->
+<!-- wagtail-5.2 | 6.0-#00676A -->
+<!-- labelColor=%232E1F5E -->
+
 ## Requirements
 
-- Python 3.8, 3.9, 3.10, 3.11, 3.12
-- Django 3.2, 4.2, 5.0
+-   Python 3.8, 3.9, 3.10, 3.11, 3.12
+-   Django 3.2, 4.2, 5.0
+-   Wagtail 5.2, 6.0
 
 ## Getting Started
 
