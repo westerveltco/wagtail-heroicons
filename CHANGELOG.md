@@ -28,6 +28,7 @@ and this project attempts to adhere to [Semantic Versioning](https://semver.org/
 -   Build script has been moved from inside the package to the root of the repository.
 -   Added link to MIT license in all SVG files and split the license and Refactoring UI Inc. copyright information into separate lines.
 -   Icon registration has been simplified to just getting a list of the icon files under the `heroicons` template directory.
+-   Application template directory containing icons has been renamed to match the package name.
 
 ### Removed
 
