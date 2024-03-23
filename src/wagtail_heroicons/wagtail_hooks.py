@@ -1,15 +1,12 @@
 from __future__ import annotations
 
-try:
-    from wagtail import hooks
-except ImportError:
-    from wagtail.core import hooks
+from pathlib import Path
 
-from .icons import Heroicon
+from wagtail import hooks
 
 
 @hooks.register("register_icons")
 def register_icons(icons):
-    for icon in Heroicon.get_icons():
-        icons.append(str(icon.path))
-    return icons
+    template_dir = Path(__file__).parent / "templates" / "heroicons"
+    heroicons = [file.stem for file in template_dir.glob("*.svg")]
+    return icons + heroicons
