@@ -14,7 +14,11 @@ from bs4 import Comment
 HEROICONS_LATEST_VERSION = "1.0.6"
 
 DEST_DIR = (
-    Path(__file__).parent / "src" / "wagtail_heroicons" / "templates" / "heroicons"
+    Path(__file__).parent
+    / "src"
+    / "wagtail_heroicons"
+    / "templates"
+    / "wagtail_heroicons"
 )
 
 
