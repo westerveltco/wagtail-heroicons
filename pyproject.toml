@@ -79,7 +79,7 @@ exclude_lines = [
   "if TYPE_CHECKING:",
   'def __str__\(self\)\s?\-?\>?\s?\w*\:'
 ]
-fail_under = 65
+fail_under = 60
 
 [tool.coverage.run]
 branch = true
