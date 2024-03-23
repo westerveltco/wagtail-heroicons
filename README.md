@@ -38,10 +38,16 @@ INSTALLED_APPS = [
 
 ## Usage
 
-## Documentation
+All icons follow the following naming convention: `heroicons-<name>-<style>`.
 
-Please refer to the [documentation](https://wagtail-heroicons.westervelt.dev/) for more information.
+For example, the [solid Adjustments icon](https://heroicons.com/#adjustments-sm-btn) would be `heroicons-adjustments-solid`.
+
+To see all available icons, names and styles, visit the [Heroicons website](https://heroicons.com/).
+
+See the [Wagtail documentation](https://docs.wagtail.org/en/latest/search.html?q=icon) for more information on using icons in Wagtail.
 
 ## License
 
 `wagtail-heroicons` is licensed under the MIT license. See the [`LICENSE`](LICENSE) file for more information.
+
+Heroicons are licensed under the MIT License and are Copyright (c) 2020 Refactoring UI Inc.
