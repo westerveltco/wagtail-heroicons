@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Now using `nox` for testing.
+- Build script has been moved from inside the package to the root of the repository.
 
 ### Removed
 
