@@ -100,4 +100,3 @@ jobs:
       - name: Run coverage
         run: |
           python -m nox --session "coverage"
-
