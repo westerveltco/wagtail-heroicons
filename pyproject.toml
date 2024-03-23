@@ -24,7 +24,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython"
 ]
 dependencies = ["wagtail>=5.2"]
-description = 'Add Heroicons to your Wagtail admin'
+description = "Add Heroicons to the Wagtail admin."
 dynamic = ["version"]
 keywords = []
 license = {file = "LICENSE"}

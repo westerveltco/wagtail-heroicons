@@ -12,6 +12,8 @@
 <!-- wagtail-5.2 | 6.0-#00676A -->
 <!-- labelColor=%232E1F5E -->
 
+Add [Heroicons](https://heroicons.com/) to the Wagtail admin.
+
 ## Requirements
 
 -   Python 3.8, 3.9, 3.10, 3.11, 3.12
