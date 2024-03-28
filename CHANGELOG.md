@@ -18,6 +18,10 @@ and this project attempts to adhere to [Semantic Versioning](https://semver.org/
 
 ## [Unreleased]
 
+### Fixed
+
+-   Fixed a bug where the icons were registered incorrectly and thus not able to be rendered by Django's `render_to_string` function. Reported by @seb-b in #58.
+
 ## [0.2.1]
 
 ### Fixed

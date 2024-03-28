@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 
+import django
 from django.conf import settings
 
 from .settings import DEFAULT_SETTINGS
@@ -16,6 +17,7 @@ def pytest_configure(config):
         **DEFAULT_SETTINGS,
         **TEST_SETTINGS,
     )
+    django.setup()
 
 
 TEST_SETTINGS = {
@@ -24,6 +26,7 @@ TEST_SETTINGS = {
         "django.contrib.auth",
         "django.contrib.contenttypes",
         "wagtail",
+        "wagtail.admin",
     ],
     "STATIC_URL": "/static/",
     "TEMPLATES": [
