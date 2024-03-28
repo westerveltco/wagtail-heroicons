@@ -26,6 +26,7 @@ TEST_SETTINGS = {
         "django.contrib.auth",
         "django.contrib.contenttypes",
         "wagtail",
+        "wagtail.admin",
     ],
     "STATIC_URL": "/static/",
     "TEMPLATES": [
