@@ -62,7 +62,7 @@ Source = "https://github.com/westerveltco/wagtail-heroicons"
 [tool.bumpver]
 commit = true
 commit_message = ":bookmark: bump version {old_version} -> {new_version}"
-current_version = "0.2.1"
+current_version = "0.2.2"
 push = false
 tag = false
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
