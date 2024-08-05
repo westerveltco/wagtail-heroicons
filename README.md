@@ -24,19 +24,19 @@ Add [Heroicons](https://heroicons.com/) to the Wagtail admin.
 
 1. Install the package from PyPI:
 
-```bash
-python -m pip install wagtail-heroicons
-```
+    ```bash
+    python -m pip install wagtail-heroicons
+    ```
 
 2. Add the app to your Django project's `INSTALLED_APPS`:
 
-```python
-INSTALLED_APPS = [
-    ...,
-    "wagtail_heroicons",
-    ...,
-]
-```
+    ```python
+    INSTALLED_APPS = [
+        ...,
+        "wagtail_heroicons",
+        ...,
+    ]
+    ```
 
 ## Usage
 
