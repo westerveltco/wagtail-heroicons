@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 
@@ -8,34 +9,36 @@ import nox
 nox.options.default_venv_backend = "uv|virtualenv"
 nox.options.reuse_existing_virtualenvs = True
 
-PY38 = "3.8"
-PY39 = "3.9"
 PY310 = "3.10"
 PY311 = "3.11"
 PY312 = "3.12"
-PY_VERSIONS = [PY38, PY39, PY310, PY311, PY312]
-PY_DEFAULT = PY_VERSIONS[0]
-PY_LATEST = PY_VERSIONS[-1]
+PY313 = "3.13"
+PY314 = "3.14"
+PY_VERSIONS = [PY310, PY311, PY312, PY313, PY314]
+PY_DEFAULT = PY310
+PY_LATEST = PY314
 
-DJ32 = "3.2"
 DJ42 = "4.2"
-DJ50 = "5.0"
+DJ51 = "5.1"
+DJ60 = "6.0"
 DJMAIN = "main"
-DJMAIN_MIN_PY = PY310
-DJ_VERSIONS = [DJ32, DJ42, DJ50, DJMAIN]
-DJ_LTS = [DJ32, DJ42]
-DJ_DEFAULT = DJ_LTS[0]
-DJ_LATEST = DJ_VERSIONS[-2]
+DJMAIN_MIN_PY = PY312
+DJ_VERSIONS = [DJ42, DJ51, DJ60, DJMAIN]
+DJ_LTS = [DJ42]
+DJ_DEFAULT = DJ42
+DJ_LATEST = DJ60
 
-WT52 = "5.2"
-WT60 = "6.0"
+WT63 = "6.3"
+WT70 = "7.0"
+WT71 = "7.1"
+WT72 = "7.2"
 WTMAIN = "main"
-WTMAIN_MIN_PY = PY38
+WTMAIN_MIN_PY = PY310
 WTMAIN_MIN_DJ = DJ42
-WT_VERSIONS = [WT52, WT60, WTMAIN]
-WT_LTS = [WT52]
-WT_DEFAULT = WT_LTS[0]
-WT_LATEST = WT_VERSIONS[-2]
+WT_VERSIONS = [WT63, WT70, WT71, WT72, WTMAIN]
+WT_LTS = [WT63, WT70]
+WT_DEFAULT = WT63
+WT_LATEST = WT72
 
 
 def version(ver: str) -> tuple[int, ...]:
@@ -46,26 +49,35 @@ def version(ver: str) -> tuple[int, ...]:
 def should_skip(python: str, django: str, wagtail: str) -> bool:
     """Return True if the test should be skipped"""
 
+    # Django main requires Python 3.12+
     if django == DJMAIN and version(python) < version(DJMAIN_MIN_PY):
-        # Django main requires Python 3.10+
         return True
 
-    if django == DJ32 and version(python) >= version(PY312):
-        # Django 3.2 requires Python < 3.12
+    # Django 4.2 doesn't support Python 3.13+
+    if django == DJ42 and version(python) >= version(PY313):
         return True
 
-    if django == DJ50 and version(python) < version(PY310):
-        # Django 5.0 requires Python 3.10+
+    # Django 5.1 doesn't support Python 3.14
+    if django == DJ51 and version(python) >= version(PY314):
         return True
 
+    # Django 6.0 requires Python 3.12+
+    if django == DJ60 and version(python) < version(PY312):
+        return True
+
+    # Wagtail main requires Python 3.10+
     if wagtail == WTMAIN and version(python) < version(WTMAIN_MIN_PY):
-        # Wagtail main requires Python 3.8+
         return True
 
+    # Wagtail main requires Django 4.2+ (no DJMAIN)
     if wagtail == WTMAIN and (
         django == DJMAIN or version(django) < version(WTMAIN_MIN_DJ)
     ):
-        # Wagtail main requires Django 4.2+
+        return True
+
+    # Django 6.0 requires Wagtail 7.2+ (preliminary support)
+    # Wagtail 7.0 and 7.1 don't support Django 6.0
+    if django == DJ60 and wagtail in [WT70, WT71]:
         return True
 
     return False
@@ -148,3 +160,21 @@ def lint(session):
 def mypy(session):
     session.install("wagtail-heroicons[dev] @ .")
     session.run("python", "-m", "mypy", ".")
+
+
+@nox.session
+def gha_matrix(session):
+    sessions = session.run("nox", "-l", "--json", silent=True)
+    matrix = {
+        "include": [
+            {
+                "python-version": session["python"],
+                "django-version": session["call_spec"]["django"],
+                "wagtail-version": session["call_spec"]["wagtail"],
+            }
+            for session in json.loads(sessions)
+            if session["name"] == "tests"
+        ]
+    }
+    with Path(os.environ["GITHUB_OUTPUT"]).open("a") as fh:
+        print(f"matrix={matrix}", file=fh)
