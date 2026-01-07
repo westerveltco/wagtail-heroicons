@@ -40,6 +40,6 @@ types:
 fmt:
     just --fmt --unstable
 
-# run pre-commit on all files
+# run prek on all files
 lint:
     @just nox lint
