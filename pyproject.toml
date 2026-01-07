@@ -2,6 +2,27 @@
 build-backend = "hatchling.build"
 requires = ["hatchling"]
 
+[dependency-groups]
+dev = [
+  "beautifulsoup4",
+  "bumpver",
+  "coverage[toml]",
+  "django-stubs",
+  "environs",
+  "hatch",
+  "httpx",
+  "mypy",
+  "nodejs-bin",
+  "nox[uv]",
+  "pytest",
+  "pytest-cov",
+  "pytest-django",
+  "pytest-randomly",
+  "pytest-xdist",
+  "ruff",
+  "types-beautifulsoup4"
+]
+
 [project]
 authors = [{name = "Josh Thomas", email = "josh@joshthomas.dev"}]
 classifiers = [
@@ -31,28 +52,6 @@ license = {file = "LICENSE"}
 name = "wagtail-heroicons"
 readme = "README.md"
 requires-python = ">=3.10"
-
-[project.optional-dependencies]
-dev = [
-  "beautifulsoup4",
-  "bumpver",
-  "coverage[toml]",
-  "django-stubs",
-  "environs",
-  "hatch",
-  "httpx",
-  "mypy",
-  "nodejs-bin",
-  "nox[uv]",
-  "pytest",
-  "pytest-cov",
-  "pytest-django",
-  "pytest-randomly",
-  "pytest-xdist",
-  "ruff",
-  "types-beautifulsoup4"
-]
-lint = ["pre-commit"]
 
 [project.urls]
 Documentation = "https://github.com/westerveltco/wagtail-heroicons"

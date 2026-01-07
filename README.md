@@ -48,6 +48,30 @@ To see all available icons, names and styles, visit the [Heroicons website](http
 
 See the [Wagtail documentation](https://docs.wagtail.org/en/latest/search.html?q=icon) for more information on using icons in Wagtail.
 
+## Development
+
+This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
+
+Install dependencies:
+
+```bash
+uv sync --locked
+# Or:
+just bootstrap
+```
+
+Run tests:
+
+```bash
+just test
+```
+
+Update dependencies:
+
+```bash
+uv lock --upgrade
+```
+
 ## License
 
 `wagtail-heroicons` is licensed under the MIT license. See the [`LICENSE`](LICENSE) file for more information.

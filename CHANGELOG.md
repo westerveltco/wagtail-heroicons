@@ -20,12 +20,17 @@ and this project attempts to adhere to [Semantic Versioning](https://semver.org/
 
 ### Changed
 
-- **BREAKING:** Dropped support for Python 3.8 and 3.9. Minimum Python version is now 3.10.
-- **BREAKING:** Dropped support for Django 3.2 and 5.0.
-- **BREAKING:** Dropped support for Wagtail 5.2 and 6.0.
+- **BREAKING**: Bump minimum versions: Python 3.10+, Django 4.2+, Wagtail 6.3+ ([#93](https://github.com/westerveltco/wagtail-heroicons/pull/93))
+- **BREAKING**: Remove `lint` extra ([#94](https://github.com/westerveltco/wagtail-heroicons/pull/94))
 - Added support for Python 3.13 and 3.14.
 - Added support for Django 5.1 and 6.0 (current).
 - Added support for Wagtail 6.3, 7.0, 7.1, and 7.2.
+- Migrated to uv project management with lockfile-based dependency resolution.
+- Updated development workflow to use `just bootstrap` or `uv sync --locked`.
+
+### Added
+
+- Added `uv.lock` for reproducible dependency resolution.
 
 ### Fixed
 
