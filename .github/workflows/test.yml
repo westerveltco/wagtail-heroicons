@@ -19,19 +19,16 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v6
 
-      - uses: westerveltco/setup-ci-action@v0
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          python-version: 3.8
-          extra-python-dependencies: nox
-          use-uv: true
+          enable-cache: true
 
       - id: set-matrix
         run: |
-          echo "matrix=$(python -m nox -l --json | jq -c '[.[] | select(.name == "tests") | {"python-version": .python, "django-version": .call_spec.django, "wagtail-version": .call_spec.wagtail}] | {include: .}')" >> $GITHUB_OUTPUT
+          uvx nox --session "gha_matrix"
 
   test:
     name: Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }}, Wagtail ${{ matrix.wagtail-version }}
@@ -41,19 +38,17 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJSON(needs.generate-matrix.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v6
 
-      - uses: westerveltco/setup-ci-action@v0
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          python-version: ${{ matrix.python-version }}
-          extra-python-dependencies: nox
-          use-uv: true
+          enable-cache: true
 
       - name: Run tests
+        continue-on-error: ${{ matrix.django-version == 'main' || matrix.wagtail-version == 'main' }}
         run: |
-          python -m nox --session "tests(python='${{ matrix.python-version }}', django='${{ matrix.django-version }}', wagtail='${{ matrix.wagtail-version }}')"
+          uvx nox --session "tests(python='${{ matrix.python-version }}', django='${{ matrix.django-version }}', wagtail='${{ matrix.wagtail-version }}')"
 
   tests:
     runs-on: ubuntu-latest
@@ -70,33 +65,27 @@ jobs:
   types:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v6
 
-      - uses: westerveltco/setup-ci-action@v0
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          python-version: 3.8
-          extra-python-dependencies: nox
-          use-uv: true
+          enable-cache: true
 
       - name: Run mypy
         run: |
-          python -m nox --session "mypy"
+          uvx nox --session "mypy"
 
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v6
 
-      - uses: westerveltco/setup-ci-action@v0
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
-          python-version: 3.8
-          extra-python-dependencies: nox
-          use-uv: true
+          enable-cache: true
 
       - name: Run coverage
         run: |
-          python -m nox --session "coverage"
+          uvx nox --session "coverage"

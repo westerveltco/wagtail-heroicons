@@ -7,30 +7,30 @@ authors = [{name = "Josh Thomas", email = "josh@joshthomas.dev"}]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Framework :: Django",
-  "Framework :: Django :: 3.2",
   "Framework :: Django :: 4.2",
-  "Framework :: Django :: 5.0",
+  "Framework :: Django :: 5.1",
+  "Framework :: Django :: 6.0",
   "Framework :: Wagtail",
-  "Framework :: Wagtail :: 5",
   "Framework :: Wagtail :: 6",
+  "Framework :: Wagtail :: 7",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Programming Language :: Python :: Implementation :: CPython"
 ]
-dependencies = ["wagtail>=5.2"]
+dependencies = ["wagtail>=6.3"]
 description = "Add Heroicons to the Wagtail admin."
 dynamic = ["version"]
 keywords = []
 license = {file = "LICENSE"}
 name = "wagtail-heroicons"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 [project.optional-dependencies]
 dev = [
@@ -149,8 +149,8 @@ extend-include = ["*.pyi?"]
 indent-width = 4
 # Same as Black.
 line-length = 88
-# Assume Python >3.8
-target-version = "py38"
+# Assume Python >=3.10
+target-version = "py310"
 
 [tool.ruff.format]
 # Like Black, indent with spaces, rather than tabs.
