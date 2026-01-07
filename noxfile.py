@@ -75,6 +75,11 @@ def should_skip(python: str, django: str, wagtail: str) -> bool:
     ):
         return True
 
+    # Django 6.0 requires Wagtail 7.2+ (preliminary support)
+    # Wagtail 7.0 and 7.1 don't support Django 6.0
+    if django == DJ60 and wagtail in [WT70, WT71]:
+        return True
+
     return False
 
 
