@@ -28,7 +28,7 @@ jobs:
 
       - id: set-matrix
         run: |
-          uvx nox --session "gha_matrix"
+          uv run nox --session "gha_matrix"
 
   test:
     name: Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }}, Wagtail ${{ matrix.wagtail-version }}
@@ -48,7 +48,7 @@ jobs:
       - name: Run tests
         continue-on-error: ${{ matrix.django-version == 'main' || matrix.wagtail-version == 'main' }}
         run: |
-          uvx nox --session "tests(python='${{ matrix.python-version }}', django='${{ matrix.django-version }}', wagtail='${{ matrix.wagtail-version }}')"
+          uv run nox --session "tests(python='${{ matrix.python-version }}', django='${{ matrix.django-version }}', wagtail='${{ matrix.wagtail-version }}')"
 
   tests:
     runs-on: ubuntu-latest
@@ -74,7 +74,7 @@ jobs:
 
       - name: Run mypy
         run: |
-          uvx nox --session "mypy"
+          uv run nox --session "mypy"
 
   coverage:
     runs-on: ubuntu-latest
@@ -88,4 +88,4 @@ jobs:
 
       - name: Run coverage
         run: |
-          uvx nox --session "coverage"
+          uv run nox --session "coverage"

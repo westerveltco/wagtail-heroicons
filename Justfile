@@ -3,35 +3,34 @@ set dotenv-load := true
 @_default:
     just --list
 
+[private]
+nox SESSION *ARGS:
+    uv run nox --session "{{ SESSION }}" -- "{{ ARGS }}"
+
+bootstrap:
+    uv sync --locked
+
 download:
     python -m download
 
-# ----------------------------------------------------------------------
-# DEPENDENCIES
-# ----------------------------------------------------------------------
-
-bootstrap:
-    @just pup
-    python -m uv pip install --editable '.[dev]'
-
-pup:
-    python -m pip install --upgrade pip uv
+lock *ARGS:
+    uv lock {{ ARGS }}
 
 # ----------------------------------------------------------------------
 # TESTING/TYPES
 # ----------------------------------------------------------------------
 
 test *ARGS:
-    python -m nox --session "test" -- "{{ ARGS }}"
+    @just nox test {{ ARGS }}
 
 testall *ARGS:
-    python -m nox --session "tests" -- "{{ ARGS }}"
+    @just nox tests {{ ARGS }}
 
 coverage:
-    python -m nox --session "coverage"
+    @just nox coverage
 
 types:
-    python -m nox --session "mypy"
+    @just nox mypy
 
 # ----------------------------------------------------------------------
 # UTILS
@@ -43,4 +42,4 @@ fmt:
 
 # run pre-commit on all files
 lint:
-    python -m nox --session "lint"
+    @just nox lint

@@ -102,7 +102,19 @@ def test(session):
     ],
 )
 def tests(session, django, wagtail):
-    session.install("wagtail-heroicons[dev] @ .")
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--inexact",
+        "--no-install-package",
+        "django",
+        "--no-install-package",
+        "wagtail",
+        "--python",
+        session.python,
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
+    )
 
     if django == DJMAIN:
         session.install(
@@ -123,7 +135,14 @@ def tests(session, django, wagtail):
 
 @nox.session
 def coverage(session):
-    session.install("wagtail-heroicons[dev] @ .")
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--python",
+        PY_DEFAULT,
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
+    )
     session.run("python", "-m", "pytest", "--cov=wagtail_heroicons")
 
     try:
@@ -152,13 +171,19 @@ def coverage(session):
 
 @nox.session
 def lint(session):
-    session.install("wagtail-heroicons[lint] @ .")
-    session.run("python", "-m", "pre_commit", "run", "--all-files")
+    session.run("uvx", "pre-commit", "run", "--all-files")
 
 
 @nox.session
 def mypy(session):
-    session.install("wagtail-heroicons[dev] @ .")
+    session.run_install(
+        "uv",
+        "sync",
+        "--frozen",
+        "--python",
+        PY_LATEST,
+        env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location},
+    )
     session.run("python", "-m", "mypy", ".")
 
 
