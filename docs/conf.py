@@ -30,7 +30,7 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "wagtail-heroicons"
-copyright = "2023, Josh Thomas"
+copyright = "2023, Josh Thomas"  # noqa: A001
 author = "Josh Thomas"
 
 
