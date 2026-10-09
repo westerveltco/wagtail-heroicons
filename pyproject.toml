@@ -24,7 +24,7 @@ dev = [
 ]
 
 [project]
-authors = [{name = "Josh Thomas", email = "josh@joshthomas.dev"}]
+authors = [{ name = "Josh Thomas", email = "josh@joshthomas.dev" }]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Framework :: Django",
@@ -48,7 +48,7 @@ dependencies = ["wagtail>=6.3"]
 description = "Add Heroicons to the Wagtail admin."
 dynamic = ["version"]
 keywords = []
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 name = "wagtail-heroicons"
 readme = "README.md"
 requires-python = ">=3.10"
